@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Alon's Flights</title>
+    <link rel="stylesheet" href="static/css/results.css">
+    <link rel="stylesheet" href="static/css/nav-style.css">
+    <script src="static/js/results.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <p>ALF</p>
+      </div>
+      <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+      <div class="navbar-logs">
+        <ul>
+          <li><a href="#">log in</a></li>
+          <li><a href="#">log out</a></li>
+          <li><a href="#">register</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="selectors">
+        <div class="row first-row">
+          <div class="type-div">
+            <select class="trip-type btn-effect" name="drop-down-menu">
+              <option value="round trip">round trip</option>
+              <option value="one way">one way</option>
+            </select>
+
+          </div>
+          <div class="main-div">
+              <button type="button" name="dd-button" class="btn btn-effect">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                  <path d="M18.746 15.68C20.27 16.22 22 16.837 22 19.318V20a.4.4 0 01-.4.4h-3.01a.2.2 0 01-.199-.226c.008-.057.012-.116.012-.174v-1.2c0-3.682-2.533-4.875-4.48-5.595a.2.2 0 01-.113-.107 4.08 4.08 0 01-.207-.59.202.202 0 01.035-.174 6.952 6.952 0 001.352-4.279.2.2 0 01.118-.177A3.172 3.172 0 0116.4 7.6a2.929 2.929 0 013.003 3.184 4.494 4.494 0 01-1.172 3.45 2.052 2.052 0 00-.046 1.04.471.471 0 00.11.246l.45.16zM17.2 18.8V20a.4.4 0 01-.403.4h-13.6a.4.4 0 01-.4-.4v-1.196c0-3.168 2.211-3.95 4.16-4.64.204-.072.408-.145.61-.22.053-.022.132-.115.193-.32a2.669 2.669 0 00-.067-1.565c-.755-.83-1.497-1.863-1.497-4.423A3.713 3.713 0 0110 3.6a3.713 3.713 0 013.804 4.034c0 2.562-.742 3.592-1.5 4.428a2.686 2.686 0 00-.066 1.56c.061.207.14.3.194.32l.591.213c1.959.697 4.177 1.487 4.177 4.645z"></path>
+                </svg>
+
+                <span class="info-num" id="passengers_number">1</span>
+                <svg class="svg-icon" viewBox="0 7 20 10">
+                  <path d="M14.91 9.083c-.25 0-.417-.166-.417-.416v-4.5c0-.25.167-.417.417-.417.583 0 .833-.417.833-.917S15.493 2 14.91 2H9.077c-.584 0-.834.417-.834.833 0 .417.25.834.75.834.334.083.5.25.5.5v4.416c0 .25-.166.417-.416.417h-.834c-1.166.083-2.083 1-2.083 2.083v8c0 1 .667 1.834 1.667 2 .083 0 .166.167.166.25 0 .5.334.667.834.667.5 0 .833-.167.833-.667a.18.18 0 01.167-.166h4.166a.18.18 0 01.167.166c0 .5.333.667.833.667.5 0 .834-.167.834-.667 0-.083.25-.25.333-.25 1-.166 1.667-1.083 1.667-2v-8c0-1.083-.75-2-1.917-2h-1zm0 4.25h-3.5c-.25 0-.417.167-.417.417v.833c0 .334-.25.667-.666.667-.417 0-.667-.25-.667-.667v-.833c0-.25-.167-.417-.333-.417h-.25a.657.657 0 01-.667-.666c0-.417.25-.667.667-.667h5.833c.333 0 .667.25.667.667a.657.657 0 01-.667.666zm-2.5-9.666c.25 0 .417.166.417.416V8.58c0 .25-.167.417-.417.417h-.833c-.25 0-.417-.167-.417-.417V4.083c0-.25.167-.416.417-.416h.833z"
+                </svg>
+                <span class="info-num" id="bags_number">0</span>
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path d="M7.912 8.747a.904.904 0 00-1.274-.065.898.898 0 00-.066 1.27l4.796 5.303a.904.904 0 001.342-.003l4.72-5.255a.898.898 0 00-.07-1.271.904.904 0 00-1.274.07l-3.754 4.18a.4.4 0 01-.595 0L7.912 8.747z"
+                </svg>
+              </button>
+            </div>
+        </div>
+
+
+        <div class="row second-row">
+          <div>
+            <label>from</label>
+            <input class="inputs" type="text" name="from" placeholder="Country, city or airport">
+          </div>
+
+          <div>
+            <label for="">to</label>
+            <input class="inputs" type="text" name="to" placeholder="Country, city or airport">
+          </div>
+
+          <div>
+            <label>earliest date for the trip</label>
+            <input class="inputs" type="date" name="earliest">
+          </div>
+
+          <div>
+            <label>latest date</label>
+            <input class="inputs" type="date" name="latest">
+          </div>
+
+          <div>
+            <label>min number of nights</label>
+            <input class="inputs num-inputs" type="number" name="min_nights" value="3">
+          </div>
+
+          <div>
+            <label>max number of nights</label>
+            <input class="inputs num-inputs" type="number" name="max_nights" value="10">
+          </div>
+
+        </div>
+
+
+        <div class="effects-div" id="id">
+          <div class="padding-div">
+            <div class="pop-over">
+              <div class="top-half">
+                <h4>Passengers</h4>
+                <div class="passenger-options">
+                  <div class="rows">
+                    <div class="left">
+                      <div class="icon-div">
+                        <svg class="pop-over-icon" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"">
+                          <path d="M21.083 17.577c-.583-1.25-2.666-2-5.583-3.084-.583-.166-.917-.25-1.083-.75-.167-.417-.167-.916.166-1.333 1.167-1.25 1.75-3.083 1.75-5.5 0-3.083-2.167-4.5-4.333-4.5-2.167 0-4.334 1.417-4.334 4.583 0 2.417.584 4.25 1.666 5.5.251.416.335.917.168 1.334-.168.416-.5.5-1.083.749-2.917 1.084-5 1.834-5.584 3.084-.5 1.082-.833 2.25-.833 3.5 0 .25.167.417.417.417h19.166c.25 0 .417-.167.417-.417 0-1.25-.334-2.417-.917-3.583"></path>
+                        </svg>
+                      </div>
+                      <div class="text-and-age">
+                          <p class="text">Adults</p>
+                          <p class="age">Over 11</p>
+                      </div>
+                    </div>
+
+                    <div class="right">
+                      <div class="counter">
+                        <button type="button" class="counter-btns">-</button>
+                        <input type="text" value="1" class="inp-box" readonly>
+                        <button type="button" class="counter-btns">+</button>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="rows">
+                    <div class="left">
+                      <div class="icon-div">
+                        <svg class="pop-over-icon" viewBox="0 0 24 24">
+                          <path d="M8.875 10.949a1.042 1.042 0 110 2.084 1.042 1.042 0 010-2.084zm6.25 0a1.042 1.042 0 110 2.084 1.042 1.042 0 010-2.084zm3.958 3.957a1.25 1.25 0 00-.017-2.5h-.004a.823.823 0 01-.812-.832v-1.25a6.241 6.241 0 00-3.144-5.413.217.217 0 00-.13-.023.21.21 0 00-.177.236 3.253 3.253 0 01-.011 1.297 2.9 2.9 0 01-2.764 2.237 2.812 2.812 0 01-2.28-1.38.834.834 0 01.385-1.114.835.835 0 011.114.386c.333.436.943.546 1.407.255a.213.213 0 00.022-.016 1.405 1.405 0 00.257-1.972 1.65 1.65 0 00-1.048-.726.167.167 0 01-.018-.008 6.248 6.248 0 00-6.113 6.241v1.26a.823.823 0 01-.816.83 1.248 1.248 0 10-.017 2.499h.311a.833.833 0 01.797.588c1.235 4.01 6.15 6.021 10.417 2.832a4.304 4.304 0 001.51-2.749.834.834 0 01.819-.678h.312zm.834-4.189a.203.203 0 00.138.19 2.917 2.917 0 011.918 2.35 2.917 2.917 0 01-2.492 3.288.195.195 0 00-.157.12 7.916 7.916 0 01-4.319 4.318 7.918 7.918 0 01-10.33-4.318.195.195 0 00-.156-.12 2.917 2.917 0 01-2.32-1.833 2.916 2.916 0 011.663-3.774.436.436 0 00.221-.357v-.257a7.925 7.925 0 018.46-7.896 8.103 8.103 0 017.374 8.175v.114zm-6.383 4.475a.815.815 0 01.07-.062.832.832 0 011.17.142.832.832 0 01-.142 1.17 4.085 4.085 0 01-5.265 0 .833.833 0 01-.07-1.108.833.833 0 011.169-.142 2.514 2.514 0 003.068 0z"></path>
+                        </svg>
+                      </div>
+                      <div class="text-and-age">
+                          <p class="text">Children</p>
+                          <p class="age">2-11</p>
+                      </div>
+                    </div>
+
+                    <div class="right">
+                      <div class="counter">
+                        <button type="button" name="minus-btn" class="counter-btns">-</button>
+                        <input type="text" name="num" value="0" class="inp-box" readonly>
+                        <button type="button" name="plus-btn" class="counter-btns">+</button>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="rows">
+                    <div class="left">
+                      <div class="icon-div">
+                        <svg class="pop-over-icon" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"">
+                          <path d="M4.06 14.35c2.546 4.241 6.785 6.494 12.657 6.751l-.048.025c-1.208.62-2.756.969-4.67.969-5.618 0-8.081-3.017-7.94-7.745zM20 14.129c.248 2.413-.342 4.547-1.894 5.997h-.112c-1.63.007-3.132-.132-4.506-.418 2.79-1.091 4.964-2.962 6.51-5.6l.002.02zM12.425 1.91c.398.011.797.054 1.186.126 3.063.567 5.425 3.02 6.198 5.303a2.61 2.61 0 011.324.603c.396.349.867 1.01.867 2.181 0 .948-.403 1.53-.742 1.85-.408.387-.904.578-1.323.672l-.144.028a.457.457 0 00-.28.248c-1.661 3.215-4.204 5.301-7.652 6.282l-.13.036c-3.247-1.074-5.65-3.123-7.23-6.148-.077-.148-.185-.245-.312-.272-.9-.15-1.856-.706-2.112-1.966-.242-1.189.147-1.976.516-2.428.454-.555 1.072-.855 1.64-.982.418-1.048 1.524-3.294 3.636-4.395 1.393-.727 2.79-1.107 4.156-1.137l.402-.001zm-.124 1.77c-1.166-.016-2.383.295-3.616.938-2.08 1.084-2.95 3.865-2.96 3.893a.888.888 0 01-.847.628c-.28 0-.687.128-.916.407-.186.228-.236.54-.152.954.131.647.852.61 1.07.583a.892.892 0 01.995.766c.324 2.543 2.754 3.743 2.779 3.755a.908.908 0 01.107.06c1.471.983 3.392.908 3.412.907l.033-.001h.06c.231-.006 1.868-.083 3.497-1.319 2.088-1.583 2.449-3.525 2.452-3.545a.883.883 0 01.922-.745c.152.007.654-.033.906-.277.08-.076.186-.218.186-.56 0-.406-.088-.692-.26-.848-.268-.242-.739-.203-.743-.203a.895.895 0 01-.969-.706c-.25-1.255-1.492-3.166-3.5-4.114.028.295.018.63-.06 1.01-.32 1.562-1.54 2.073-2.503 2.073-.16 0-.313-.015-.454-.04a.886.886 0 01.31-1.744c.502.076.809-.14.912-.644.074-.365.046-.65-.085-.846-.147-.222-.427-.339-.576-.381zm-.308 8.878c1.038.003 1.857.064 1.857 1.12 0 1.105-.87 1.593-1.975 1.593-1.104 0-2.025-.488-2.025-1.592 0-1.057.82-1.118 1.857-1.121h.286zm-2.8-2.725a1.104 1.104 0 110 2.209 1.104 1.104 0 010-2.209zm5.376 0a1.104 1.104 0 110 2.209 1.104 1.104 0 010-2.209z"></path>
+                        </svg>
+                      </div>
+                      <div class="text-and-age">
+                          <p class="text">Infants</p>
+                          <p class="age">Under 2</p>
+                      </div>
+                    </div>
+
+                    <div class="right">
+                      <div class="counter">
+                        <button type="button" name="minus-btn" class="counter-btns">-</button>
+                        <input type="text" name="num" value="0" class="inp-box" readonly>
+                        <button type="button" name="plus-btn" class="counter-btns">+</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="bottom-half">
+                <h4>Bags</h4>
+                <div class="bag-options">
+                  <div class="rows">
+                    <div class="left">
+                      <div class="icon-div">
+                        <svg class="pop-over-icon" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"">
+                          <path d="M14.91 9.083c-.25 0-.417-.166-.417-.416v-4.5c0-.25.167-.417.417-.417.583 0 .833-.417.833-.917S15.493 2 14.91 2H9.077c-.584 0-.834.417-.834.833 0 .417.25.834.75.834.334.083.5.25.5.5v4.416c0 .25-.166.417-.416.417h-.834c-1.166.083-2.083 1-2.083 2.083v8c0 1 .667 1.834 1.667 2 .083 0 .166.167.166.25 0 .5.334.667.834.667.5 0 .833-.167.833-.667a.18.18 0 01.167-.166h4.166a.18.18 0 01.167.166c0 .5.333.667.833.667.5 0 .834-.167.834-.667 0-.083.25-.25.333-.25 1-.166 1.667-1.083 1.667-2v-8c0-1.083-.75-2-1.917-2h-1zm0 4.25h-3.5c-.25 0-.417.167-.417.417v.833c0 .334-.25.667-.666.667-.417 0-.667-.25-.667-.667v-.833c0-.25-.167-.417-.333-.417h-.25a.657.657 0 01-.667-.666c0-.417.25-.667.667-.667h5.833c.333 0 .667.25.667.667a.657.657 0 01-.667.666zm-2.5-9.666c.25 0 .417.166.417.416V8.58c0 .25-.167.417-.417.417h-.833c-.25 0-.417-.167-.417-.417V4.083c0-.25.167-.416.417-.416h.833z"></path>
+                        </svg>
+                      </div>
+                      <div class="text-and-age">
+                          <p class="text">Cabin baggage</p>
+                      </div>
+                    </div>
+
+                    <div class="right">
+                      <div class="counter">
+                        <button type="button" name="minus-btn" class="counter-btns">-</button>
+                        <input type="text" name="num" value="0" class="inp-box" readonly>
+                        <button type="button" name="plus-btn" class="counter-btns">+</button>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="rows">
+                    <div class="left">
+                      <div class="icon-div">
+                        <svg class="pop-over-icon" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"">
+                          <path d="M15.91 5.333c-1.417 0-1.417-.166-1.417-.416v-.75c0-.25.167-.417.417-.417.583 0 .833-.417.833-.917S15.493 2 14.91 2H9.077c-.584 0-.834.417-.834.833 0 .417.25.834.75.834.334.083.5.25.5.5v.666c0 .25-.166.417-.416.417H6.243c-1.166.083-2.083 1-2.083 2.083v11.75c0 1 .667 1.834 1.667 2 .083 0 .166.167.166.25 0 .5.334.667.834.667.5 0 .833-.167.833-.667a.18.18 0 01.167-.166h8.166a.18.18 0 01.167.166c0 .5.334.667.834.667.5 0 .833-.167.833-.667 0-.083.25-.25.333-.25 1-.166 1.667-1.083 1.667-2V7.333c0-1.083-.75-2-1.917-2h-2zM15.6 8.75a.75.75 0 011.5 0v8.5a.75.75 0 01-1.5 0v-8.5zm-4.3 0a.75.75 0 011.5 0v8.5a.75.75 0 01-1.5 0v-8.5zM7.75 8a.75.75 0 01.75.75v8.5a.75.75 0 01-1.5 0v-8.5A.75.75 0 017.75 8zm3.41-3.917c0-.25.167-.416.417-.416h.833c.25 0 .417.166.417.416v.747c0 .25-.167.417-.417.417h-.833c-.25 0-.417-.167-.417-.417v-.747z"></path>
+                        </svg>
+                      </div>
+                      <div class="text-and-age">
+                          <p class="text">Checked baggage</p>
+                      </div>
+                    </div>
+
+                    <div class="right">
+                      <div class="counter">
+                        <button type="button" name="minus-btn" class="counter-btns">-</button>
+                        <input type="text" name="num" value="0" class="inp-box" readonly>
+                        <button type="button" name="plus-btn" class="counter-btns">+</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div>
+                <hr>
+                <div class="pop-over-buttons">
+                  <button type="button" id="cancel-button">Cancel</button>
+                  <button type="button" id="done-button">Done</button>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="results">
+      <div class="option">
+        <div class="row-wrapper">
+          <div class="option-row">
+
+            <div class="leftest-div sector-div">
+              <p class="information bold">16/9</p>
+              <p class="information regular">Fri</p>
+            </div>
+
+            <div class="left-div sector-div">
+              <p class="information bold">09:00 am - 13:00 pm</p>
+              <p class="information regular">SWISS</p>
+            </div>
+
+            <div class="middle-div sector-div">
+              <p class="information bold">nonstop</p>
+            </div>
+
+            <div class="right-div sector-div">
+              <p class="information bold">4h 20m</p>
+              <p class="information regular">TLV-ZHR</p>
+            </div>
+          </div>
+
+          <div class="option-row">
+
+            <div class="leftest-div sector-div">
+              <p class="information bold">3/10</p>
+              <p class="information regular">Fri</p>
+            </div>
+
+            <div class="left-div sector-div">
+              <p class="information bold">09:00 am - 13:00 pm</p>
+              <p class="information regular">SWISS</p>
+            </div>
+
+            <div class="middle-div sector-div">
+              <p class="information bold">nonstop</p>
+            </div>
+
+            <div class="right-div sector-div">
+              <p class="information bold">4h 20m</p>
+              <p class="information regular">TLV-ZHR</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="luggage">
+          <div class="b">
+
+            <div class="c">
+              <svg class="a icon-a" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                <path d="M14.91 9.083c-.25 0-.417-.166-.417-.416v-4.5c0-.25.167-.417.417-.417.583 0 .833-.417.833-.917S15.493 2 14.91 2H9.077c-.584 0-.834.417-.834.833 0 .417.25.834.75.834.334.083.5.25.5.5v4.416c0 .25-.166.417-.416.417h-.834c-1.166.083-2.083 1-2.083 2.083v8c0 1 .667 1.834 1.667 2 .083 0 .166.167.166.25 0 .5.334.667.834.667.5 0 .833-.167.833-.667a.18.18 0 01.167-.166h4.166a.18.18 0 01.167.166c0 .5.333.667.833.667.5 0 .834-.167.834-.667 0-.083.25-.25.333-.25 1-.166 1.667-1.083 1.667-2v-8c0-1.083-.75-2-1.917-2h-1zm0 4.25h-3.5c-.25 0-.417.167-.417.417v.833c0 .334-.25.667-.666.667-.417 0-.667-.25-.667-.667v-.833c0-.25-.167-.417-.333-.417h-.25a.657.657 0 01-.667-.666c0-.417.25-.667.667-.667h5.833c.333 0 .667.25.667.667a.657.657 0 01-.667.666zm-2.5-9.666c.25 0 .417.166.417.416V8.58c0 .25-.167.417-.417.417h-.833c-.25 0-.417-.167-.417-.417V4.083c0-.25.167-.416.417-.416h.833z"></path>
+              </svg>
+              <p class="a" style="height:20px; line-height:20px;">0</p>
+            </div>
+
+            <div class="c">
+              <svg class="a icon-a" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                <path d="M15.91 5.333c-1.417 0-1.417-.166-1.417-.416v-.75c0-.25.167-.417.417-.417.583 0 .833-.417.833-.917S15.493 2 14.91 2H9.077c-.584 0-.834.417-.834.833 0 .417.25.834.75.834.334.083.5.25.5.5v.666c0 .25-.166.417-.416.417H6.243c-1.166.083-2.083 1-2.083 2.083v11.75c0 1 .667 1.834 1.667 2 .083 0 .166.167.166.25 0 .5.334.667.834.667.5 0 .833-.167.833-.667a.18.18 0 01.167-.166h8.166a.18.18 0 01.167.166c0 .5.334.667.834.667.5 0 .833-.167.833-.667 0-.083.25-.25.333-.25 1-.166 1.667-1.083 1.667-2V7.333c0-1.083-.75-2-1.917-2h-2zM15.6 8.75a.75.75 0 011.5 0v8.5a.75.75 0 01-1.5 0v-8.5zm-4.3 0a.75.75 0 011.5 0v8.5a.75.75 0 01-1.5 0v-8.5zM7.75 8a.75.75 0 01.75.75v8.5a.75.75 0 01-1.5 0v-8.5A.75.75 0 017.75 8zm3.41-3.917c0-.25.167-.416.417-.416h.833c.25 0 .417.166.417.416v.747c0 .25-.167.417-.417.417h-.833c-.25 0-.417-.167-.417-.417v-.747z"></path>
+              </svg>
+              <p class="a" style="height:20px; line-height:20px;">0</p>
+            </div>
+          </div>
+          <p class="bold price">252$</p>
+          <p class="nights">14 nights</p>
+          <p class="regular site">mytrip.com</p>
+          <button type="button" id="lg-button" class="btn-effect">View Deal</button>
+        </div>
+
+
+      </div>
+    </div>
+  </body>
+</html>

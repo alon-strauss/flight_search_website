@@ -1,0 +1,98 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-family: 'Martel', serif;
+  margin: 5px 12px;
+
+}
+
+p {
+  margin: 0px;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
+.navbar-logs ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+
+.navbar-logs li {
+  list-style: none;
+}
+
+
+.navbar-logs li a {
+  text-decoration: none;
+  color: white;
+  padding: 1rem 1.5rem;
+  display: block;
+}
+
+
+.navbar-logs li:hover {
+  background-color: #555;
+}
+
+
+.toggle-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+@media (max-width: 600px){
+  .toggle-button {
+    display: flex;
+  }
+
+  .navbar-logs {
+    display: none;
+    width: 100%;
+  }
+
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-logs ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar-logs li {
+    text-align: center;
+  }
+
+  .navbar-logs li a {
+    padding: .5rem 1rem;
+  }
+
+  .navbar-logs.active {
+    display: flex;
+  }
+
+}
