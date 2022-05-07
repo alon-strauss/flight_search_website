@@ -32,7 +32,7 @@ function start() {
     minusButton.addEventListener('click', event => {
       var inputNumber = counter.children[1]
       var magicNumber = parseInt(inputNumber.value)
-      if (magicNumber > 1) {
+      if (magicNumber > 0) {
         magicNumber--
         inputNumber.value = magicNumber
     }

@@ -25,7 +25,7 @@ function start() {
     minusButton.addEventListener('click', event => {
       var inputNumber = counter.children[1]
       var magicNumber = parseInt(inputNumber.value)
-      if (magicNumber > 1) {
+      if (magicNumber > 0) {
         magicNumber--
         inputNumber.value = magicNumber
     }
@@ -60,10 +60,15 @@ function update() {
   }
 
   var passengers_number = document.querySelector("#passengers_number")
+  var thing = document.querySelector("#thing")
   passengers_number.textContent = total_passengers
+  thing.value = total_passengers
 
   var bags_number = document.querySelector("#bags_number")
+  var something = document.querySelector("#something")
   bags_number.textContent = total_bags
+  something.value = total_bags
+
 
   close()
 }
