@@ -35,7 +35,6 @@
             <select class="trip-type btn-effect" name="drop-down-menu">
               <option value="{{info['type_of_trip']}}" selected disabled hidden>{{info['type_of_trip']}}</option>
               <option value="round trip">round trip</option>
-              <option value="one way">one way</option>
             </select>
 
           </div>
@@ -89,6 +88,10 @@
           <div>
             <label>max number of nights</label>
             <input class="inputs num-inputs" type="number" name="max_nights" value="{{info['max_nights']}}" min="1">
+          </div>
+
+          <div id="research-div">
+            <button type="submit" id="research-button" class="action-btns">search</button>
           </div>
 
         </div>
@@ -240,13 +243,13 @@
           <div class="option-row">
 
             <div class="leftest-div sector-div">
-              <p class="information bold">16/9</p>
-              <p class="information regular">Fri</p>
+              <p class="information bold">{{search_result["local_departure_flight1_date"]}}</p>
+              <p class="information regular">{{search_result["day_of_flight1"]}}</p>
             </div>
 
             <div class="left-div sector-div">
-              <p class="information bold">09:00 am - 13:00 pm</p>
-              <p class="information regular">SWISS</p>
+              <p class="information bold">{{search_result["local_departure_flight1"]}} - {{search_result["local_arrival_flight1"]}}</p>
+              <p class="information regular">{{search_result['d_airline']}}</p>
             </div>
 
             <div class="middle-div sector-div">
@@ -254,21 +257,21 @@
             </div>
 
             <div class="right-div sector-div">
-              <p class="information bold">4h 20m</p>
-              <p class="information regular">TLV-ZHR</p>
+              <p class="information bold">{{search_result["duration_of_flight1"]}}</p>
+              <p class="information regular">{{search_result['city_from']}}-{{search_result['city_to']}}</p>
             </div>
           </div>
 
           <div class="option-row">
 
             <div class="leftest-div sector-div">
-              <p class="information bold">3/10</p>
-              <p class="information regular">Fri</p>
+              <p class="information bold">{{search_result["local_departure_flight2_date"]}}</p>
+              <p class="information regular">{{search_result["day_of_flight2"]}}</p>
             </div>
 
             <div class="left-div sector-div">
-              <p class="information bold">09:00 am - 13:00 pm</p>
-              <p class="information regular">SWISS</p>
+              <p class="information bold">{{search_result["local_departure_flight2"]}} - {{search_result["local_arrival_flight2"]}}</p>
+              <p class="information regular">{{search_result['r_airline']}}</p>
             </div>
 
             <div class="middle-div sector-div">
@@ -276,8 +279,8 @@
             </div>
 
             <div class="right-div sector-div">
-              <p class="information bold">4h 20m</p>
-              <p class="information regular">TLV-ZHR</p>
+              <p class="information bold">{{search_result["duration_of_flight2"]}}</p>
+              <p class="information regular">{{search_result['city_to']}}-{{search_result['city_from']}}</p>
             </div>
           </div>
         </div>
@@ -290,20 +293,19 @@
               <svg class="a icon-a" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
                 <path d="M14.91 9.083c-.25 0-.417-.166-.417-.416v-4.5c0-.25.167-.417.417-.417.583 0 .833-.417.833-.917S15.493 2 14.91 2H9.077c-.584 0-.834.417-.834.833 0 .417.25.834.75.834.334.083.5.25.5.5v4.416c0 .25-.166.417-.416.417h-.834c-1.166.083-2.083 1-2.083 2.083v8c0 1 .667 1.834 1.667 2 .083 0 .166.167.166.25 0 .5.334.667.834.667.5 0 .833-.167.833-.667a.18.18 0 01.167-.166h4.166a.18.18 0 01.167.166c0 .5.333.667.833.667.5 0 .834-.167.834-.667 0-.083.25-.25.333-.25 1-.166 1.667-1.083 1.667-2v-8c0-1.083-.75-2-1.917-2h-1zm0 4.25h-3.5c-.25 0-.417.167-.417.417v.833c0 .334-.25.667-.666.667-.417 0-.667-.25-.667-.667v-.833c0-.25-.167-.417-.333-.417h-.25a.657.657 0 01-.667-.666c0-.417.25-.667.667-.667h5.833c.333 0 .667.25.667.667a.657.657 0 01-.667.666zm-2.5-9.666c.25 0 .417.166.417.416V8.58c0 .25-.167.417-.417.417h-.833c-.25 0-.417-.167-.417-.417V4.083c0-.25.167-.416.417-.416h.833z"></path>
               </svg>
-              <p class="a" style="height:20px; line-height:20px;">0</p>
+              <p class="a" style="height:20px; line-height:20px;">{{ info["hand_bag"] }}</p>
             </div>
 
             <div class="c">
               <svg class="a icon-a" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
                 <path d="M15.91 5.333c-1.417 0-1.417-.166-1.417-.416v-.75c0-.25.167-.417.417-.417.583 0 .833-.417.833-.917S15.493 2 14.91 2H9.077c-.584 0-.834.417-.834.833 0 .417.25.834.75.834.334.083.5.25.5.5v.666c0 .25-.166.417-.416.417H6.243c-1.166.083-2.083 1-2.083 2.083v11.75c0 1 .667 1.834 1.667 2 .083 0 .166.167.166.25 0 .5.334.667.834.667.5 0 .833-.167.833-.667a.18.18 0 01.167-.166h8.166a.18.18 0 01.167.166c0 .5.334.667.834.667.5 0 .833-.167.833-.667 0-.083.25-.25.333-.25 1-.166 1.667-1.083 1.667-2V7.333c0-1.083-.75-2-1.917-2h-2zM15.6 8.75a.75.75 0 011.5 0v8.5a.75.75 0 01-1.5 0v-8.5zm-4.3 0a.75.75 0 011.5 0v8.5a.75.75 0 01-1.5 0v-8.5zM7.75 8a.75.75 0 01.75.75v8.5a.75.75 0 01-1.5 0v-8.5A.75.75 0 017.75 8zm3.41-3.917c0-.25.167-.416.417-.416h.833c.25 0 .417.166.417.416v.747c0 .25-.167.417-.417.417h-.833c-.25 0-.417-.167-.417-.417v-.747z"></path>
               </svg>
-              <p class="a" style="height:20px; line-height:20px;">0</p>
+              <p class="a" style="height:20px; line-height:20px;">{{ info["hold_bag"] }}</p>
             </div>
           </div>
-          <p class="bold price">{{search_result['price']}}$</p>
-          <p class="nights">14 nights</p>
-          <p class="regular site">mytrip.com</p>
-          <button type="button" id="lg-button" class="btn-effect">View Deal</button>
+          <p class="bold price">{{search_result['price']}}₪</p>
+          <p class="nights">{{search_result["num_of_nights"]}} nights</p>
+          <button type="button" id="lg-button" class="action-btns">View Deal</button>
         </div>
 
 

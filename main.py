@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from flight_search import FlightSearch
 from formatter import FlightData
-from pprint import pprint
 
 app = Flask(__name__)
 flight_search = FlightSearch()
@@ -26,6 +25,7 @@ def results_page():
         "adults": request.form["adults"],
         "children": request.form["children"],
         "infants": request.form["infants"],
+        "num_baggage": request.form["num_baggage"],
         "hold_bag": request.form["hold_bag"],
         "hand_bag": request.form["hand_bag"],
 

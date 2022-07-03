@@ -138,7 +138,7 @@ label {
   inset: 0px auto auto 0px;
   position: fixed;
   opacity: 1;
-  transform: translate3d(310px, 228px, 0px);
+  transform: translate3d(120px, 58px, 0px);
   transition: opacity 0.15s ease-in-out 0s;
   border-radius: 3px;
   width: 273px;
@@ -417,14 +417,10 @@ hr {
 #lg-button {
   width: 90%;
   padding: .75rem;
-  background-color: rgb(0, 0, 0);
-  color: rgb(255, 255, 255);
   font-weight: 600;
   font-size: 1rem;
   border-radius: 10px;
   margin-top: 7px;
-  border: none;
-  outline: none;
 }
 
 .nights {
@@ -436,10 +432,30 @@ hr {
   font-size: 12px;
 }
 
-#lg-button:hover {
+.action-btns {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border: none;
+  outline: none;
+}
+
+.action-btns:hover {
   background-color: #444;
 }
 
-#lg-button:active {
+.action-btns:active {
   background-color: #555;
+}
+
+#research-div {
+  align-self: flex-end;
+}
+
+#research-button {
+  padding: .5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: .9rem;
+  width: 70px;
+
 }

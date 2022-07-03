@@ -1,19 +1,76 @@
+import datetime as dt
+import requests
+
+OATH_SERVER = "https://test.api.amadeus.com/v1/security/oauth2/token"
+ENDPOINT = "https://test.api.amadeus.com/v1/reference-data/airlines"
+CLIENT_ID = "m18pn0wNrMciLLzpqHqskMUAKM0lKMCH"
+CLIENT_SECRET = "88Nn6H9p7V6BaUVr"
+
+
 class FlightData:
 
     def data_formatter(self, data):
         search_result = data[0]
         flight_information = {
-            "price": search_result['price'],
+            "price": round(search_result['price']),
             "city_from": search_result['cityFrom'],
             "city_to": search_result['cityTo'],
-            "first_airline": search_result['route'][0]['airline'],
-            "local_departure_flight1_date": search_result['route'][0]['local_departure'][:10].split("-")[
-                                            ::-1],
-            "local_arrival_flight1": search_result['route'][0]['local_arrival'],
-            "second_airline": search_result['route'][1]['airline'],
-            "local_departure_flight2_date": search_result['route'][1]['local_departure'][:10].split("-")[
-                                            ::-1],
-            "local_arrival_flight2": search_result['route'][1]['local_arrival'],
+            "d_airline": self.airline_name_finder(search_result['route'][0]['airline']).lower(),
+            "r_airline": self.airline_name_finder(search_result['route'][1]['airline']).lower(),
+            "local_departure_flight1_date": '/'.join(search_result['route'][0]['local_departure'][:10].split("-")[
+                                                     ::-1]),
+            "local_arrival_flight1": search_result['route'][0]['local_arrival'][11:16],
+            "local_departure_flight1": search_result['route'][0]['local_departure'][11:16],
+            "local_departure_flight2_date": '/'.join(search_result['route'][1]['local_departure'][:10].split("-")[
+                                                     ::-1]),
+            "local_departure_flight2": search_result['route'][1]['local_departure'][11:16],
+            "local_arrival_flight2": search_result['route'][1]['local_arrival'][11:16],
+            "num_of_nights": search_result['nightsInDest'],
+            "duration_of_flight1": self.trip_length_calculator(search_result['route'][0]['utc_departure'][11:16],
+                                                               search_result['route'][0]['utc_arrival'][11:16]),
+            "duration_of_flight2": self.trip_length_calculator(search_result['route'][1]['utc_departure'][11:16],
+                                                               search_result['route'][1]['utc_arrival'][11:16]),
+            "day_of_flight1": self.day_finder(search_result['route'][0]['local_departure']),
+            "day_of_flight2": self.day_finder(search_result['route'][1]['local_departure']),
+
         }
 
         return flight_information
+
+    def trip_length_calculator(self, start, end):
+        start_dt = dt.datetime.strptime(start, '%H:%M')
+        end_dt = dt.datetime.strptime(end, '%H:%M')
+        diff = str((end_dt - start_dt))[:-3].split(':')
+        if diff[1][0] == '0':
+            diff[1] = diff[1][1:]
+        return f'{diff[0]} hours {diff[1]} minutes'
+
+    def day_finder(self, date):
+        year, month, day = date[:10].split('-')
+        d = dt.datetime(int(year), int(month), int(day))
+        return d.strftime('%a')
+
+    def get_oath_token(self):
+        headers = {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+
+        body = {
+            "grant_type": "client_credentials",
+            "client_id": CLIENT_ID,
+            "client_secret": CLIENT_SECRET,
+        }
+
+        response = requests.post(url=OATH_SERVER, data=body, headers=headers)
+        return response.json()["access_token"]
+
+    def airline_name_finder(self, iata):
+        headers = {
+            "Authorization": f"Bearer {self.get_oath_token()}"
+        }
+        parameters = {
+            "airlineCodes": iata,
+        }
+        response = requests.get(url=ENDPOINT, headers=headers, params=parameters)
+        print(response.json())
+        return response.json()["data"][0]["businessName"]
