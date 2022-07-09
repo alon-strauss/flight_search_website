@@ -32,6 +32,7 @@ def results_page():
     }
 
     results_data = flight_search.search(input_info)
+    print(results_data)
     results = formatter.data_formatter(results_data["data"])
     return render_template("results.html", info=input_info, search_result=results)
 

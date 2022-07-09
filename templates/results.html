@@ -28,12 +28,11 @@
         </ul>
       </div>
     </nav>
-
+    <form action="/results" method="post">
     <div class="selectors">
         <div class="row first-row">
           <div class="type-div">
             <select class="trip-type btn-effect" name="drop-down-menu">
-              <option value="{{info['type_of_trip']}}" selected disabled hidden>{{info['type_of_trip']}}</option>
               <option value="round trip">round trip</option>
             </select>
 
@@ -45,10 +44,12 @@
                 </svg>
 
                 <span class="info-num" id="passengers_number">{{info['num_people']}}</span>
+                <input name="num_people" id="num_people" value="{{info['num_people']}}" hidden>
                 <svg class="svg-icon" viewBox="0 7 20 10">
                   <path d="M14.91 9.083c-.25 0-.417-.166-.417-.416v-4.5c0-.25.167-.417.417-.417.583 0 .833-.417.833-.917S15.493 2 14.91 2H9.077c-.584 0-.834.417-.834.833 0 .417.25.834.75.834.334.083.5.25.5.5v4.416c0 .25-.166.417-.416.417h-.834c-1.166.083-2.083 1-2.083 2.083v8c0 1 .667 1.834 1.667 2 .083 0 .166.167.166.25 0 .5.334.667.834.667.5 0 .833-.167.833-.667a.18.18 0 01.167-.166h4.166a.18.18 0 01.167.166c0 .5.333.667.833.667.5 0 .834-.167.834-.667 0-.083.25-.25.333-.25 1-.166 1.667-1.083 1.667-2v-8c0-1.083-.75-2-1.917-2h-1zm0 4.25h-3.5c-.25 0-.417.167-.417.417v.833c0 .334-.25.667-.666.667-.417 0-.667-.25-.667-.667v-.833c0-.25-.167-.417-.333-.417h-.25a.657.657 0 01-.667-.666c0-.417.25-.667.667-.667h5.833c.333 0 .667.25.667.667a.657.657 0 01-.667.666zm-2.5-9.666c.25 0 .417.166.417.416V8.58c0 .25-.167.417-.417.417h-.833c-.25 0-.417-.167-.417-.417V4.083c0-.25.167-.416.417-.416h.833z"></path>
                 </svg>
                 <span class="info-num" id="bags_number">{{info['num_baggage']}}</span>
+                <input name="num_baggage" id="num_baggage" value="{{info['num_baggage']}}" hidden>
                 <svg class="svg-icon" viewBox="0 0 20 20">
                     <path d="M7.912 8.747a.904.904 0 00-1.274-.065.898.898 0 00-.066 1.27l4.796 5.303a.904.904 0 001.342-.003l4.72-5.255a.898.898 0 00-.07-1.271.904.904 0 00-1.274.07l-3.754 4.18a.4.4 0 01-.595 0L7.912 8.747z"></path>
                 </svg>
@@ -60,24 +61,24 @@
         <div class="row second-row">
           <div>
             <label>from</label>
-            <input class="inputs" type="text" name="from" placeholder="{{info['from_d']}}">
+            <input class="inputs" type="text" name="from" placeholder="{{info['from_d']}}" value="{{info['from_d']}}">
           </div>
 
           <div>
             <label>to</label>
-            <input class="inputs" type="text" name="to" placeholder="{{info['to_d']}}">
+            <input class="inputs" type="text" name="to" placeholder="{{info['to_d']}}" value="{{info['to_d']}}">
           </div>
 
           <div>
             <label>earliest date for the trip</label>
-            <input class="inputs" type="text" name="earliest" placeholder="{{info['earliest_date']}}"
-                   onfocus="(this.type='date')" onblur="(this.type='text')">
+            <input class="inputs" type="text" name="earliest_date" placeholder="{{info['earliest_date']}}"
+                   value="{{info['earliest_date']}}" onfocus="(this.type='date')" onblur="(this.type='text')">
           </div>
 
           <div>
             <label>latest date</label>
-            <input class="inputs" type="text" name="latest" placeholder="{{info['latest_date']}}"
-            onfocus="(this.type='date')" onblur="(this.type='text')">
+            <input class="inputs" type="text" name="latest_date" placeholder="{{info['latest_date']}}"
+            value="{{info['latest_date']}}" onfocus="(this.type='date')" onblur="(this.type='text')">
           </div>
 
           <div>
@@ -119,7 +120,7 @@
                     <div class="right">
                       <div class="counter">
                         <button type="button" class="counter-btns">-</button>
-                        <input type="text" value="1" class="inp-box" readonly>
+                        <input type="text" name="adults" value="{{info['adults']}}" class="inp-box" id="adults" readonly>
                         <button type="button" class="counter-btns">+</button>
                       </div>
                     </div>
@@ -142,7 +143,7 @@
                     <div class="right">
                       <div class="counter">
                         <button type="button" name="minus-btn" class="counter-btns">-</button>
-                        <input type="text" name="num" value="0" class="inp-box" readonly>
+                        <input type="text" name="children" id="children" value="{{info['children']}}" class="inp-box" readonly>
                         <button type="button" name="plus-btn" class="counter-btns">+</button>
                       </div>
                     </div>
@@ -165,7 +166,7 @@
                     <div class="right">
                       <div class="counter">
                         <button type="button" name="minus-btn" class="counter-btns">-</button>
-                        <input type="text" name="num" value="0" class="inp-box" readonly>
+                        <input type="text" name="infants" id="infants" value="{{info['infants']}}" class="inp-box" readonly>
                         <button type="button" name="plus-btn" class="counter-btns">+</button>
                       </div>
                     </div>
@@ -193,7 +194,7 @@
                     <div class="right">
                       <div class="counter">
                         <button type="button" name="minus-btn" class="counter-btns">-</button>
-                        <input type="text" name="num" value="0" class="inp-box" readonly>
+                        <input type="text" name="hand_bag" value="{{info['hand_bag']}}" class="inp-box" readonly>
                         <button type="button" name="plus-btn" class="counter-btns">+</button>
                       </div>
                     </div>
@@ -215,7 +216,7 @@
                     <div class="right">
                       <div class="counter">
                         <button type="button" name="minus-btn" class="counter-btns">-</button>
-                        <input type="text" name="num" value="0" class="inp-box" readonly>
+                        <input type="text" name="hold_bag" value="{{info['hold_bag']}}" class="inp-box" readonly>
                         <button type="button" name="plus-btn" class="counter-btns">+</button>
                       </div>
                     </div>
@@ -236,6 +237,7 @@
         </div>
 
     </div>
+    </form>
 
     <div class="results">
       <div class="option">

@@ -41,6 +41,9 @@ class FlightData:
         start_dt = dt.datetime.strptime(start, '%H:%M')
         end_dt = dt.datetime.strptime(end, '%H:%M')
         diff = str((end_dt - start_dt))[:-3].split(':')
+        if len(diff[0]) > 2:
+            diff[0] = diff[0].split(' ')
+            diff[0] = diff[0][-1]
         if diff[1][0] == '0':
             diff[1] = diff[1][1:]
         return f'{diff[0]} hours {diff[1]} minutes'
@@ -71,6 +74,10 @@ class FlightData:
         parameters = {
             "airlineCodes": iata,
         }
-        response = requests.get(url=ENDPOINT, headers=headers, params=parameters)
-        print(response.json())
-        return response.json()["data"][0]["businessName"]
+        try:
+            response = requests.get(url=ENDPOINT, headers=headers, params=parameters)
+            return response.json()["data"][0]["businessName"]
+
+        except KeyError:
+            return iata
+

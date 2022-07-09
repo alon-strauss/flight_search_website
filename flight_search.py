@@ -16,6 +16,9 @@ class FlightSearch:
         return iata_code
 
     def search(self, info):
+        #2 for hold bag, 1 for hand bag(function needs to distinguish them because API has a limit of 2 hold bags per person but only 1 hand bag per person.
+        hold_bag_dist = self.bags_formatting((info["adults"], info["children"], info["hold_bag"], 2))
+        hand_bag_dist = self.bags_formatting((info["adults"], info["children"], info["hand_bag"], 1))
         endpoint = f'{KIWI_ENDPOINT}/v2/search'
         search_parameters = {
             "fly_from": info["from_d"],
@@ -30,11 +33,54 @@ class FlightSearch:
             "adults": info["adults"],
             "children": info["children"],
             "infants": info["infants"],
-            "adult_hold_bag": info["hold_bag"],
-            "adult_hand_bag": info["hand_bag"],
+            "adult_hold_bag": hold_bag_dist[0],
+            "adult_hand_bag": hand_bag_dist[0],
+            "child_hold_bag": hold_bag_dist[1],
+            "child_hand_bag": hand_bag_dist[1],
             "curr": "ILS"
 
         }
         response = requests.get(url=endpoint, params=search_parameters, headers=HEADERS)
         result = response.json()
         return result
+
+    def bags_formatting(self, info):
+        info = (int(x) for x in info)
+        adults, children, bags, type = info
+        if type == 2:
+            l = 2
+        else:
+            l = 1
+        i = 0
+        output = [0] * adults
+        while bags > 0:
+            if output[-1] == l:
+                if children != 0:
+                    k = 0
+                    output2 = [0] * children
+                    while bags > 0:
+                        if output2[-1] == l:
+                            raise Exception("too many bags")
+                        elif output2[k] < l:
+                            output2[k] += 1
+                            bags -= 1
+                        else:
+                            k += 1
+                    output = [str(n) for n in output]
+                    output2 = [str(n) for n in output2]
+                    return [",".join(output), ",".join(output2)]
+                else:
+                    raise Exception("too many bags")
+            elif output[i] < l:
+                output[i] += 1
+                bags -= 1
+            else:
+                i += 1
+
+        output = [str(n) for n in output]
+        output2 = [str(0)] * children
+        return [",".join(output), ",".join(output2)]
+
+
+
+
