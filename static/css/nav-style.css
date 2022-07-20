@@ -62,6 +62,14 @@ p {
   border-radius: 10px;
 }
 
+#a-name {
+    cursor: default;
+}
+
+#li-name:hover {
+    background-color: inherit;
+}
+
 @media (max-width: 600px){
   .toggle-button {
     display: flex;

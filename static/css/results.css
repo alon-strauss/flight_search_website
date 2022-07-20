@@ -319,6 +319,7 @@ hr {
   font-weight: 300;
   width: 80%;
   margin: auto;
+  margin-bottom: 2rem;
   border-radius: 7px;
   display: flex;
   justify-content: space-between;
@@ -414,7 +415,7 @@ hr {
 
 }
 
-#lg-button {
+.lg-button {
   width: 90%;
   padding: .75rem;
   font-weight: 600;

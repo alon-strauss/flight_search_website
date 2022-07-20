@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alon's Flights</title>
+    <link rel="stylesheet" href="static/css/log.css">
+</head>
+<body>
+    <div class="header">
+            <h1>Log In</h1>
+    </div>
+
+    <div class="container">
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/login" method="post">
+    <input type="text" name="email" placeholder="email" class="log-inputs" required="required">
+    <input type="password" name="password" placeholder="password" class="log-inputs" required="required">
+    <button type="submit" class="log-inputs log-btn">log in</button>
+    </form>
+    </div>
+</body>
+</html>

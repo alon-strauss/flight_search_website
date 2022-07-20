@@ -22,9 +22,8 @@
       </a>
       <div class="navbar-logs">
         <ul>
-          <li><a href="#">log in</a></li>
-          <li><a href="#">log out</a></li>
-          <li><a href="#">register</a></li>
+          <li><a href="{{url_for('login')}}">log in</a></li>
+          <li><a href="{{url_for('register')}}">register</a></li>
         </ul>
       </div>
     </nav>
@@ -240,18 +239,19 @@
     </form>
 
     <div class="results">
+      {% for i in range(search_result |length)%}
       <div class="option">
         <div class="row-wrapper">
           <div class="option-row">
 
             <div class="leftest-div sector-div">
-              <p class="information bold">{{search_result["local_departure_flight1_date"]}}</p>
-              <p class="information regular">{{search_result["day_of_flight1"]}}</p>
+              <p class="information bold">{{search_result[i]["local_departure_flight1_date"]}}</p>
+              <p class="information regular">{{search_result[i]["day_of_flight1"]}}</p>
             </div>
 
             <div class="left-div sector-div">
-              <p class="information bold">{{search_result["local_departure_flight1"]}} - {{search_result["local_arrival_flight1"]}}</p>
-              <p class="information regular">{{search_result['d_airline']}}</p>
+              <p class="information bold">{{search_result[i]["local_departure_flight1"]}} - {{search_result[i]["local_arrival_flight1"]}}</p>
+              <p class="information regular">{{search_result[i]['d_airline']}}</p>
             </div>
 
             <div class="middle-div sector-div">
@@ -259,21 +259,21 @@
             </div>
 
             <div class="right-div sector-div">
-              <p class="information bold">{{search_result["duration_of_flight1"]}}</p>
-              <p class="information regular">{{search_result['city_from']}}-{{search_result['city_to']}}</p>
+              <p class="information bold">{{search_result[i]["duration_of_flight1"]}}</p>
+              <p class="information regular">{{search_result[i]['city_from']}}-{{search_result[i]['city_to']}}</p>
             </div>
           </div>
 
           <div class="option-row">
 
             <div class="leftest-div sector-div">
-              <p class="information bold">{{search_result["local_departure_flight2_date"]}}</p>
-              <p class="information regular">{{search_result["day_of_flight2"]}}</p>
+              <p class="information bold">{{search_result[i]["local_departure_flight2_date"]}}</p>
+              <p class="information regular">{{search_result[i]["day_of_flight2"]}}</p>
             </div>
 
             <div class="left-div sector-div">
-              <p class="information bold">{{search_result["local_departure_flight2"]}} - {{search_result["local_arrival_flight2"]}}</p>
-              <p class="information regular">{{search_result['r_airline']}}</p>
+              <p class="information bold">{{search_result[i]["local_departure_flight2"]}} - {{search_result[i]["local_arrival_flight2"]}}</p>
+              <p class="information regular">{{search_result[i]['r_airline']}}</p>
             </div>
 
             <div class="middle-div sector-div">
@@ -281,8 +281,8 @@
             </div>
 
             <div class="right-div sector-div">
-              <p class="information bold">{{search_result["duration_of_flight2"]}}</p>
-              <p class="information regular">{{search_result['city_to']}}-{{search_result['city_from']}}</p>
+              <p class="information bold">{{search_result[i]["duration_of_flight2"]}}</p>
+              <p class="information regular">{{search_result[i]['city_to']}}-{{search_result[i]['city_from']}}</p>
             </div>
           </div>
         </div>
@@ -305,13 +305,14 @@
               <p class="a" style="height:20px; line-height:20px;">{{ info["hold_bag"] }}</p>
             </div>
           </div>
-          <p class="bold price">{{search_result['price']}}₪</p>
-          <p class="nights">{{search_result["num_of_nights"]}} nights</p>
-          <button type="button" id="lg-button" class="action-btns">View Deal</button>
+          <p class="bold price">{{search_result[i]['price']}}₪</p>
+          <p class="nights">{{search_result[i]["num_of_nights"]}} nights</p>
+          <button type="button" class="action-btns lg-button">View Deal</button>
         </div>
 
 
       </div>
+      {% endfor %}
     </div>
   </body>
 </html>
