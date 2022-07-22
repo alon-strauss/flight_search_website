@@ -27,7 +27,7 @@
       <span class="bar"></span>
     </a>
     <div class="navbar-logs">
-      {% if is_logged_in == True %}
+      {% if is_logged_in %}
         <ul>
           <li id="li-name"><a href="#" id="a-name">hello {{name}}</a></li>
           <li><a href="{{url_for('logout')}}">log out</a></li>
@@ -253,5 +253,49 @@
 
   </div>
 </form>
+  <div class="container">
+    <div class="searches-header">
+      <h2>Your last searches:</h2>
+    </div>
+
+    <div class="last-searches">
+      <div class="search">
+        <div class="half-search-l">
+          <p class="destination">Geneva</p>
+          <p class="travellers">2 travellers</p>
+          <p class="dates">19.9 - 4.10</p>
+          <p class="dates">8-10 nights</p>
+        </div>
+        <div class="half-search-r">
+          <img src="https://images.unsplash.com/photo-1633022326182-1b36700bc49a?crop=entropy&cs=tinysrgb&fit=max&fm
+          =jpg&ixid=MnwzNDgxMDN8MHwxfHNlYXJjaHwxfHxnZW5ldmF8ZW58MHx8fHwxNjU4Mzk4NTMz&ixlib=rb-1.2.1&q=80&w=200" class="img">
+        </div>
+      </div>
+      <div class="search">
+        <div class="half-search-l">
+          <p class="destination">Geneva</p>
+          <p class="travellers">2 travellers</p>
+          <p class="dates">19.9 - 4.10</p>
+          <p class="dates">8-10 nights</p>
+        </div>
+        <div class="half-search-r">
+          <img src="https://images.unsplash.com/photo-1633022326182-1b36700bc49a?crop=entropy&cs=tinysrgb&fit=max&fm
+          =jpg&ixid=MnwzNDgxMDN8MHwxfHNlYXJjaHwxfHxnZW5ldmF8ZW58MHx8fHwxNjU4Mzk4NTMz&ixlib=rb-1.2.1&q=80&w=200" class="img">
+        </div>
+      </div>
+      <div class="search">
+        <div class="half-search-l">
+          <p class="destination">Geneva</p>
+          <p class="travellers">2 travellers</p>
+          <p class="dates">19.9 - 4.10</p>
+          <p class="dates">8-10 nights</p>
+        </div>
+        <div class="half-search-r">
+          <img src="https://images.unsplash.com/photo-1633022326182-1b36700bc49a?crop=entropy&cs=tinysrgb&fit=max&fm
+          =jpg&ixid=MnwzNDgxMDN8MHwxfHNlYXJjaHwxfHxnZW5ldmF8ZW58MHx8fHwxNjU4Mzk4NTMz&ixlib=rb-1.2.1&q=80&w=200" class="img">
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

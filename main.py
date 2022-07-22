@@ -23,7 +23,6 @@ class User(db.Model):
 is_logged_in = False
 name = ''
 
-
 @app.route("/", methods=["GET", "POST"])
 def home():
     return render_template("home_page.html", is_logged_in=is_logged_in, name=name)
@@ -50,10 +49,10 @@ def results_page():
     }
 
     results_data = flight_search.search(input_info)
-    # pprint(results_data)
     results = formatter.data_formatter(results_data["data"])
-    return render_template("results.html", info=input_info, search_result=results, is_logged_in=is_logged_in)
-
+    global is_logged_in
+    global name
+    return render_template("results.html", info=input_info, search_result=results, is_logged_in=is_logged_in, name=name)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -71,7 +70,11 @@ def login():
             flash('Password incorrect, please try again.')
             return redirect(url_for('login'))
         else:
-            return render_template("home_page.html", is_logged_in=True, name=user.name)
+            global is_logged_in
+            is_logged_in = True
+            global name
+            name = user.name
+            return render_template("home_page.html", is_logged_in=is_logged_in, name=name)
     return render_template("login.html")
 
 
@@ -96,12 +99,20 @@ def register():
         )
         db.session.add(new_user)
         db.session.commit()
+        global is_logged_in
+        is_logged_in = True
+        global name
+        name = new_user.name
         return render_template("home_page.html", is_logged_in=True, name=new_user.name)
     return render_template("register.html")
 
 
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
+    global is_logged_in
+    is_logged_in = False
+    global name
+    name = ""
     return render_template("home_page.html", is_logged_in=False)
 
 
