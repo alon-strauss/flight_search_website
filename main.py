@@ -23,6 +23,7 @@ class User(db.Model):
 is_logged_in = False
 name = ''
 
+
 @app.route("/", methods=["GET", "POST"])
 def home():
     return render_template("home_page.html", is_logged_in=is_logged_in, name=name)
@@ -47,7 +48,6 @@ def results_page():
         "hand_bag": request.form["hand_bag"],
 
     }
-
     results_data = flight_search.search(input_info)
     results = formatter.data_formatter(results_data["data"])
     global is_logged_in

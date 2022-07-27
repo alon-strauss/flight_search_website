@@ -11,7 +11,7 @@ class FlightData:
 
     def data_formatter(self, data):
         flights_information = []
-        for i in range(5):
+        for i in range(2):
             search_result = data[i]
             flight_information = {
                 "price": round(search_result['price']),
