@@ -385,3 +385,8 @@ hr {
 #search-0, #search-1, #search-2 {
     display: none;
 }
+
+#flash {
+    color: red;
+    text-align: center;
+}
