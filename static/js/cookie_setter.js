@@ -5,6 +5,10 @@ if (document.readyState == 'loading') {
 }
 
 function start() {
+// the algorithm makes sure that every time a new search is executed it is saved with the 0 attached
+//and the existing cookies (if exist) move one number up so 1 becomes 2 for example.
+//Up to a minimum of 3 cookies which makes sure there arent a lot of cookies being saved
+//in local storage bc as soon as there are more than 3 cookies, the oldest one gets deleted.
     if (localStorage.getItem("i") >= 1) {
         for (let k = 2; k > 0; k--) {
           localStorage.setItem(`to ${k}`, localStorage.getItem(`to ${k - 1}`));
@@ -32,7 +36,8 @@ function start() {
        localStorage.setItem("i", 0);
     }
 
-
+// the next line isolates the destination from a home-destination string
+//and converts special characters to regular ones
     var to = document.getElementsByClassName('regular')[2].textContent
     .split('-')[1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     var earliest = document.getElementsByClassName('inputs')[2].value
@@ -48,6 +53,7 @@ function start() {
     localStorage.setItem("max 0", max);
     localStorage.setItem("passengers 0", passengers);
 
+// gets a photo of the destination using an API
     const Url = `https://api.unsplash.com/search/photos?query=${to.toLowerCase()}&per_page=1&w=200`;
     const header = {
         Authorization: "Client-ID w7uy1Xu7Z9NkbhElRquPnP4ton7tymGrCpB4m_HRdVs"

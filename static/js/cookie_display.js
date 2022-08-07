@@ -9,7 +9,7 @@ function start() {
     if (localStorage.getItem("to 0")) {
         document.getElementsByClassName("searches-header")[0].style.display = "block";
 
-
+// displaying the last searches info from local storage
         for (let m = 0; m < localStorage.getItem("i") + 1; m++) {
             document.getElementsByClassName("destination")[m].innerHTML = localStorage.getItem(`to ${m}`);
             document.getElementsByClassName("travellers")[m].innerHTML = localStorage.getItem(`passengers ${m}`) + " travellers";

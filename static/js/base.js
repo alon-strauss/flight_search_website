@@ -1,17 +1,12 @@
+// making the navbar responsive
 const toggleButton = document.getElementsByClassName('toggle-button')[0]
 const navbarLogs = document.getElementsByClassName('navbar-logs')[0]
 
+// adding the functionality to the fancy button
 toggleButton.addEventListener('click', () => {
   navbarLogs.classList.toggle('active')
 })
 
-if (document.readyState == 'loading') {
-  document.addEventListener('DOMContentLoaded', ready)
-} else {
-  start ()
-}
-
-function start() {
   var dd_button = document.getElementsByName('dd-button')[0]
   const counters = document.querySelectorAll(".counter")
 
@@ -79,4 +74,4 @@ function update() {
   num_baggage.value = total_bags
 
   close()
-}
+

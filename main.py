@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 flight_search = FlightSearch()
 formatter = FlightData()
 
-
+# defining the database
 class User(db.Model):
     email = db.Column(db.String(100), unique=True, primary_key=True)
     password = db.Column(db.String(100), nullable=False)
