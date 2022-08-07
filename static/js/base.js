@@ -69,13 +69,13 @@ function update() {
   var passengers_number = document.querySelector("#passengers_number")
   passengers_number.textContent = total_passengers
 
-  var num_people = document.querySelector("#num_people")
+  var num_people = document.querySelector("#thing")
   num_people.value = total_passengers
 
   var bags_number = document.querySelector("#bags_number")
   bags_number.textContent = total_bags
 
-  var num_baggage = document.querySelector("#num_baggage")
+  var num_baggage = document.querySelector("#something")
   num_baggage.value = total_bags
 
   close()

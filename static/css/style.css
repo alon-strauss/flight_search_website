@@ -341,6 +341,7 @@ hr {
 .searches-header {
     color: rgb(255, 255, 255);
     margin-left: 50px;
+    display: none;
 }
 
 .last-searches {
