@@ -87,6 +87,7 @@
 
 
       <div class="row second-row">
+        <div class="half">
         <div>
           <label>from</label>
           <input class="inputs" type="text" name="from" placeholder="name of city" required="required">
@@ -101,7 +102,8 @@
           <label>earliest date for the trip</label>
           <input class="inputs" type="date" name="earliest_date" required="required">
         </div>
-
+        </div>
+        <div class="half">
         <div>
           <label>latest date</label>
           <input class="inputs" type="date" name="latest_date" required="required">
@@ -116,7 +118,7 @@
           <label>max number of nights</label>
           <input class="inputs num-inputs" type="number" name="max_nights" value="10" min="1">
         </div>
-
+        </div>
       </div>
 
 
@@ -273,10 +275,15 @@
     <div class="last-searches">
       <div class="search" id="search-0">
         <div class="half-search-l">
-          <p class="destination">Geneva</p>
-          <p class="travellers">2 travellers</p>
-          <p class="dates">19.9 - 4.10</p>
-          <p class="nights">8-10 nights</p>
+          <div class="part">
+            <p class="destination">Geneva</p>
+            <p class="travellers">2 travellers</p>
+          </div>
+          <div class="part">
+            <p class="dates">19.9 - 4.10</p>
+            <p class="nights">8-10 nights</p>
+
+          </div>
         </div>
         <div class="half-search-r">
           <img id="image-0" src="https://images.unsplash.com/photo-1633022326182-1b36700bc49a?crop=entropy&cs=tinysrgb&fit=max&fm

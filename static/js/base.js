@@ -32,7 +32,7 @@ toggleButton.addEventListener('click', () => {
         inputNumber.value = magicNumber
     }
   })});
-}
+
 
 function open() {
   document.getElementById("id").style.display = "block"
@@ -74,4 +74,4 @@ function update() {
   num_baggage.value = total_bags
 
   close()
-
+}
