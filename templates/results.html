@@ -67,6 +67,7 @@
 
 
         <div class="row second-row">
+          <div class="half">
           <div>
             <label>from</label>
             <input class="inputs" type="text" name="from" placeholder="{{info['from_d']}}" value="{{info['from_d']}}">
@@ -82,7 +83,9 @@
             <input class="inputs" type="text" name="earliest_date" placeholder="{{info['earliest_date']}}"
                    value="{{info['earliest_date']}}" onfocus="(this.type='date')" onblur="(this.type='text')">
           </div>
+            </div>
 
+          <div class="half">
           <div>
             <label>latest date</label>
             <input class="inputs" type="text" name="latest_date" placeholder="{{info['latest_date']}}"
@@ -98,6 +101,7 @@
             <label>max number of nights</label>
             <input class="inputs num-inputs" type="number" name="max_nights" value="{{info['max_nights']}}" min="1">
           </div>
+            </div>
 
           <div id="research-div">
             <button type="submit" id="research-button" class="action-btns">search</button>

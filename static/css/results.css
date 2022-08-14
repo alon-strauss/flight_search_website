@@ -38,7 +38,7 @@ margin-bottom: 40px;
 
 .second-row{
   justify-content: flex-start;
-  gap: 5%;
+  padding-left: 0px;
 }
 
 
@@ -459,4 +459,41 @@ hr {
   font-size: .9rem;
   width: 70px;
 
+}
+
+.half {
+    display: flex;
+    justify-content: space-around;
+    width: 45%;
+}
+
+@media (max-width: 1300px) {
+    .second-row {
+        display: block;
+    }
+
+    .half {
+        width: auto;
+    }
+
+    #research-button {
+        width: 100%;
+        margin-top: 3%;
+    }
+
+}
+
+
+@media (max-width: 1300px) {
+
+    .middle-div {
+        display:none;
+    }
+}
+
+
+@media (max-width: 1300px) {
+    .option {
+        width: 95%;
+    }
 }
