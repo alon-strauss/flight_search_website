@@ -272,8 +272,10 @@
       <h2>Your last searches:</h2>
     </div>
 
+
     <div class="last-searches">
-      <div class="search" id="search-0">
+      <form action="/" method="post">
+      <div class="search" id="search-0" role="button" onclick="document.forms[1].submit();">
         <div class="half-search-l">
           <div class="part">
             <p class="destination">Geneva</p>
@@ -284,36 +286,96 @@
             <p class="nights">8-10 nights</p>
 
           </div>
+
+<!--passive inputs, to make the search clickable, all the search parameters must be provided-->
+        <input class="invisible-form"  name="to" value="" hidden>
+        <input class="invisible-form"  name="from" value="" hidden>
+        <input class="invisible-form"  name="earliest_date" value="" hidden>
+        <input class="invisible-form"  name="latest_date" value="" hidden>
+        <input class="invisible-form"  name="min_nights" value="" hidden>
+        <input class="invisible-form"  name="max_nights" value="" hidden>
+        <input class="invisible-form"  name="num_people" value="" hidden>
+        <input class="invisible-form"  name="adults" value="" hidden>
+        <input class="invisible-form"  name="children" value="" hidden>
+        <input class="invisible-form"  name="infants" value="" hidden>
+        <input class="invisible-form"  name="num_baggage" value="" hidden>
+        <input class="invisible-form"  name="hold_bag" value="" hidden>
+        <input class="invisible-form"  name="hand_bag" value="" hidden>
+
+
+
+
         </div>
         <div class="half-search-r">
           <img id="image-0" src="https://images.unsplash.com/photo-1633022326182-1b36700bc49a?crop=entropy&cs=tinysrgb&fit=max&fm
           =jpg&ixid=MnwzNDgxMDN8MHwxfHNlYXJjaHwxfHxnZW5ldmF8ZW58MHx8fHwxNjU4Mzk4NTMz&ixlib=rb-1.2.1&q=80&w=200" class="img">
         </div>
       </div>
-      <div class="search" id="search-1">
+      </form>
+
+      <form action="/" method="post">
+      <div class="search" id="search-1" role="button" onclick="document.forms[2].submit();">
         <div class="half-search-l">
           <p class="destination">Geneva</p>
           <p class="travellers">2 travellers</p>
           <p class="dates">19.9 - 4.10</p>
           <p class="nights">8-10 nights</p>
+
+
+        <input class="invisible-form"  name="to" value="" hidden>
+        <input class="invisible-form"  name="from" value="" hidden>
+        <input class="invisible-form"  name="earliest_date" value="" hidden>
+        <input class="invisible-form"  name="latest_date" value="" hidden>
+        <input class="invisible-form"  name="min_nights" value="" hidden>
+        <input class="invisible-form"  name="max_nights" value="" hidden>
+        <input class="invisible-form"  name="num_people" value="" hidden>
+        <input class="invisible-form"  name="adults" value="" hidden>
+        <input class="invisible-form"  name="children" value="" hidden>
+        <input class="invisible-form"  name="infants" value="" hidden>
+        <input class="invisible-form"  name="num_baggage" value="" hidden>
+        <input class="invisible-form"  name="hold_bag" value="" hidden>
+        <input class="invisible-form"  name="hand_bag" value="" hidden>
+
+
         </div>
         <div class="half-search-r">
           <img id="image-1" src="https://images.unsplash.com/photo-1633022326182-1b36700bc49a?crop=entropy&cs=tinysrgb&fit=max&fm
           =jpg&ixid=MnwzNDgxMDN8MHwxfHNlYXJjaHwxfHxnZW5ldmF8ZW58MHx8fHwxNjU4Mzk4NTMz&ixlib=rb-1.2.1&q=80&w=200" class="img">
         </div>
       </div>
-      <div class="search" id="search-2">
+      </form>
+
+      <form action="/" method="post">
+      <div class="search" id="search-2" role="button" onclick="document.forms[3].submit();">
         <div class="half-search-l">
           <p class="destination">Geneva</p>
           <p class="travellers">2 travellers</p>
           <p class="dates">19.9 - 4.10</p>
           <p class="nights">8-10 nights</p>
+
+
+        <input class="invisible-form"  name="to" value="" hidden>
+        <input class="invisible-form"  name="from" value="" hidden>
+        <input class="invisible-form"  name="earliest_date" value="" hidden>
+        <input class="invisible-form"  name="latest_date" value="" hidden>
+        <input class="invisible-form"  name="min_nights" value="" hidden>
+        <input class="invisible-form"  name="max_nights" value="" hidden>
+        <input class="invisible-form"  name="num_people" value="" hidden>
+        <input class="invisible-form"  name="adults" value="" hidden>
+        <input class="invisible-form"  name="children" value="" hidden>
+        <input class="invisible-form"  name="infants" value="" hidden>
+        <input class="invisible-form"  name="num_baggage" value="" hidden>
+        <input class="invisible-form"  name="hold_bag" value="" hidden>
+        <input class="invisible-form"  name="hand_bag" value="" hidden>
+
+
         </div>
         <div class="half-search-r">
           <img id="image-2" src="https://images.unsplash.com/photo-1633022326182-1b36700bc49a?crop=entropy&cs=tinysrgb&fit=max&fm
           =jpg&ixid=MnwzNDgxMDN8MHwxfHNlYXJjaHwxfHxnZW5ldmF8ZW58MHx8fHwxNjU4Mzk4NTMz&ixlib=rb-1.2.1&q=80&w=200" class="img">
         </div>
       </div>
+      </form>
     </div>
   </div>
 </body>

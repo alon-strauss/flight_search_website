@@ -3,6 +3,7 @@ from flight_search import FlightSearch
 from formatter import FlightData
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from pprint import pprint
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'do384j#kd%0964az!'
@@ -42,7 +43,6 @@ def home():
             "latest_date": request.form["latest_date"],
             "min_nights": request.form["min_nights"],
             "max_nights": request.form["max_nights"],
-            "type_of_trip": request.form["drop-down-menu"],
             "num_people": request.form["num_people"],
             "adults": request.form["adults"],
             "children": request.form["children"],
@@ -64,6 +64,7 @@ def home():
         try:
             results = formatter.data_formatter(results_data["data"])
         except:
+            pprint(results_data)
             flash("Please enter valid dates")
             return redirect(url_for("home"))
         return render_template("results.html", info=input_info, search_result=results, is_logged_in=is_logged_in,

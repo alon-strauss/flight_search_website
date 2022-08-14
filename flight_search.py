@@ -27,7 +27,7 @@ class FlightSearch:
             "dateTo": info["latest_date"],
             "nights_in_dst_from": info["min_nights"],
             "nights_in_dst_to": info["max_nights"],
-            "flight_type": "round" if info["type_of_trip"] == "round trip" else "oneway",
+            "flight_type": "round",
             "limit": 2,
             "max_stopovers": 0,
             "adults": info["adults"],
