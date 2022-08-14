@@ -6,6 +6,24 @@ if (document.readyState == 'loading') {
 
 
 function start() {
+// making sure that only the main search button creates a cookie
+    main_form = document.forms[0]
+    form1 = document.forms[1]
+    form2 = document.forms[2]
+    form3 = document.forms[3]
+
+    main_form.addEventListener("submit", (event) => {
+        localStorage.setItem("setCookie", "True");
+    });
+
+    [form1, form2, form3].forEach((element)=>{
+        element.addEventListener('submit', (event) => {
+            localStorage.setItem("setCookie", "False");
+        });
+    });
+
+
+
     if (localStorage.getItem("to 0")) {
         document.getElementsByClassName("searches-header")[0].style.display = "block";
 
