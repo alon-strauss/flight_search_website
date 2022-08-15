@@ -59,13 +59,12 @@ def home():
             flash("Too many bags - please select up to 1 hand bag and 2 hold bags per person.")
             return redirect(url_for("home"))
 
-        # if the dates are not valid then the program will fail in the line below,
-        # so the except prevents it
+        # if there are no results for the search or the dates are not valid,
+        # then the program will fail in the line below, so the except prevents it.
         try:
             results = formatter.data_formatter(results_data["data"])
         except:
-            pprint(results_data)
-            flash("Please enter valid dates")
+            flash("No results were found")
             return redirect(url_for("home"))
         return render_template("results.html", info=input_info, search_result=results, is_logged_in=is_logged_in,
                                name=name)

@@ -6,10 +6,10 @@ if (document.readyState == 'loading') {
 
 function start() {
 // making sure that only the main search button creates a cookie
-    research = document.forms[0]
-    research.addEventListener("submit", (event) => {
-        localStorage.setItem("setCookie", "False");
-    });
+//    research = document.forms[0]
+//    research.addEventListener("submit", (event) => {
+//        localStorage.setItem("setCookie", "False");
+//    });
 
     if (localStorage.getItem("setCookie") == "True") {
 // the algorithm makes sure that every time a new search is executed it is saved with the 0 attached
@@ -118,6 +118,8 @@ function start() {
     .then(() =>  (photo_temp = photo.replace("max", "min")))
     .then(() =>  (photo_final = photo_temp + "&h=150"))
     .then(() => (localStorage.setItem("src 0", photo_final)))
+
+    localStorage.setItem("setCookie", "False");
 }}
 
 

@@ -8,9 +8,9 @@ if (document.readyState == 'loading') {
 function start() {
 // making sure that only the main search button creates a cookie
     main_form = document.forms[0]
-    form1 = document.forms[1]
-    form2 = document.forms[2]
-    form3 = document.forms[3]
+//    form1 = document.forms[1]
+//    form2 = document.forms[2]
+//    form3 = document.forms[3]
 
     main_form.addEventListener("submit", (event) => {
         localStorage.setItem("setCookie", "True");
@@ -28,7 +28,7 @@ function start() {
         document.getElementsByClassName("searches-header")[0].style.display = "block";
 
 // displaying the last searches info from local storage
-        for (let m = 0; m < localStorage.getItem("i") + 1; m++) {
+        for (let m = 0; m < parseInt(localStorage.getItem("i")) + 1; m++) {
         // visible
             document.getElementsByClassName("destination")[m].innerHTML = localStorage.getItem(`to ${m}`);
             document.getElementsByClassName("travellers")[m].innerHTML = localStorage.getItem(`passengers ${m}`) + " travellers";
@@ -52,11 +52,6 @@ function start() {
             document.getElementsByClassName("invisible-form")[10 + 13 * m].value = localStorage.getItem(`num_baggage ${m}`);
             document.getElementsByClassName("invisible-form")[11 + 13 * m].value = localStorage.getItem(`hold_bag ${m}`);
             document.getElementsByClassName("invisible-form")[12 + 13 * m].value = localStorage.getItem(`hand_bag ${m}`);
-
-            for (l=0; l<13; l++) {
-            console.log(document.getElementsByClassName("invisible-form")[l].value)
-        }
-
         }
 
         if (localStorage.getItem("i") == 0) {
