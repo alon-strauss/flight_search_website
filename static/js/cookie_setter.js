@@ -5,11 +5,6 @@ if (document.readyState == 'loading') {
 }
 
 function start() {
-// making sure that only the main search button creates a cookie
-//    research = document.forms[0]
-//    research.addEventListener("submit", (event) => {
-//        localStorage.setItem("setCookie", "False");
-//    });
 
     if (localStorage.getItem("setCookie") == "True") {
 // the algorithm makes sure that every time a new search is executed it is saved with the 0 attached

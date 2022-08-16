@@ -3,10 +3,10 @@ from flight_search import FlightSearch
 from formatter import FlightData
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from pprint import pprint
+import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'do384j#kd%0964az!'
+app.config['SECRET_KEY'] = os.environ['APP_SECRET_KEY']
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)

@@ -1,17 +1,18 @@
 import datetime as dt
 import requests
+import os
 
 OATH_SERVER = "https://test.api.amadeus.com/v1/security/oauth2/token"
 ENDPOINT = "https://test.api.amadeus.com/v1/reference-data/airlines"
-CLIENT_ID = "m18pn0wNrMciLLzpqHqskMUAKM0lKMCH"
-CLIENT_SECRET = "88Nn6H9p7V6BaUVr"
+CLIENT_ID = os.environ["CLIENT_ID"]
+CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 
 
 class FlightData:
 
     def data_formatter(self, data):
         flights_information = []
-        for i in range(2):
+        for i in range(5):
             search_result = data[i]
             flight_information = {
                 "price": round(search_result['price']),

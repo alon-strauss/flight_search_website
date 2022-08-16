@@ -1,7 +1,8 @@
 import requests
+import os
 
 KIWI_ENDPOINT = "https://tequila-api.kiwi.com"
-HEADERS = {"apikey": 'wOrSXW5wZmxSEewqKNN2Iu3kVXTnkjMP'}
+HEADERS = {"apikey": os.environ["SEARCH_API_KEY"]}
 
 
 class FlightSearch:
@@ -28,7 +29,7 @@ class FlightSearch:
             "nights_in_dst_from": info["min_nights"],
             "nights_in_dst_to": info["max_nights"],
             "flight_type": "round",
-            "limit": 2,
+            "limit": 5,
             "max_stopovers": 0,
             "adults": info["adults"],
             "children": info["children"],
