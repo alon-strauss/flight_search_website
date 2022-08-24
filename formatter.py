@@ -4,8 +4,8 @@ import os
 
 OATH_SERVER = "https://test.api.amadeus.com/v1/security/oauth2/token"
 ENDPOINT = "https://test.api.amadeus.com/v1/reference-data/airlines"
-CLIENT_ID = os.environ["CLIENT_ID"]
-CLIENT_SECRET = os.environ["CLIENT_SECRET"]
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 
 
 class FlightData:

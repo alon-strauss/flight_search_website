@@ -2,7 +2,7 @@ import requests
 import os
 
 KIWI_ENDPOINT = "https://tequila-api.kiwi.com"
-HEADERS = {"apikey": os.environ["SEARCH_API_KEY"]}
+HEADERS = {"apikey": os.getenv("SEARCH_API_KEY")}
 
 
 class FlightSearch:
