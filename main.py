@@ -21,7 +21,7 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable=False)
 
 
-db.create_all()
+# db.create_all()
 
 is_logged_in = False
 name = ''
