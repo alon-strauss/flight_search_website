@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key = os.getenv('APP_SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -134,3 +134,8 @@ def logout():
 
 if __name__ == "__main__":
     app.run()
+
+
+# if things don't work in the future, especially things related to the database.
+# know that in lesson 70 in the course the last step is to switch from sqlite to postgressql or something like that.
+# now from november 2022, this will no longer be available on heroku for free. that can mess things up.
