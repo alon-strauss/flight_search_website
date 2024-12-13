@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, flash
+from flask import Flask, render_template, request, url_for, redirect, flash, session
 from flight_search import FlightSearch
 from formatter import FlightData
 from flask_sqlalchemy import SQLAlchemy
@@ -21,10 +21,12 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable=False)
 
 
-db.create_all()
+# db.create_all()
 
-is_logged_in = False
-name = ''
+@app.before_request
+def set_globals():
+    is_logged_in = session.get("is_logged_in", False)
+    name = session.get("name", "")
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -68,9 +70,10 @@ def home():
         except:
             flash("No results were found")
             return redirect(url_for("home"))
-        return render_template("results.html", info=input_info, search_result=results, is_logged_in=is_logged_in,
-                               name=name)
-    return render_template("home_page.html", is_logged_in=is_logged_in, name=name)
+        return render_template("results.html", info=input_info, search_result=results,
+                               is_logged_in=session.get("is_logged_in", False), name=session.get("name", ""))
+    return render_template("home_page.html",
+                           is_logged_in=session.get("is_logged_in", False), name=session.get("name", ""))
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -88,11 +91,10 @@ def login():
             flash('Password incorrect, please try again.')
             return redirect(url_for('login'))
         else:
-            global is_logged_in
-            is_logged_in = True
-            global name
-            name = user.name
-            return render_template("home_page.html", is_logged_in=is_logged_in, name=name)
+            session["is_logged_in"] = True
+            session["name"] = user.name
+            return render_template("home_page.html",
+                                   is_logged_in=session.get("is_logged_in", False), name=session.get("name", ""))
     return render_template("login.html")
 
 
@@ -117,20 +119,17 @@ def register():
         )
         db.session.add(new_user)
         db.session.commit()
-        global is_logged_in
-        is_logged_in = True
-        global name
-        name = new_user.name
-        return render_template("home_page.html", is_logged_in=True, name=new_user.name)
+        session["is_logged_in"] = True
+        session["name"] = new_user.name
+        return render_template("home_page.html",
+                               is_logged_in=session.get("is_logged_in", False), name=session.get("name", ""))
     return render_template("register.html")
 
 
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
-    global is_logged_in
-    is_logged_in = False
-    global name
-    name = ""
+    session.pop("is_logged_in", None)
+    session.pop("name", None)
     return render_template("home_page.html", is_logged_in=False)
 
 
