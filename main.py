@@ -21,12 +21,15 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable=False)
 
 
-# db.create_all()
+db.create_all()
 
 @app.before_request
 def set_globals():
     is_logged_in = session.get("is_logged_in", False)
     name = session.get("name", "")
+def create_tables():
+    with app.app_context():
+        db.create_all()
 
 
 @app.route("/", methods=["GET", "POST"])
